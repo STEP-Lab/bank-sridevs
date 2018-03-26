@@ -1,7 +1,7 @@
 package com.thoughtworks.step;
 
-public class MinimumBalanceException extends Throwable {
-    public MinimumBalanceException() {
+class MinimumBalanceException extends Throwable {
+    MinimumBalanceException() {
         super("Insufficient minimum balance");
     }
 }
