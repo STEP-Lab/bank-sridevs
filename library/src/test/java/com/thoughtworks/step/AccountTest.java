@@ -40,4 +40,10 @@ public class AccountTest {
         assertThat(harvar.getAccNo(),is( "0000-0001"));
         assertThat(sridev.getAccNo(),is( "0000-0002"));
     }
+
+    @Test
+    public void checkDebit() throws InsufficientBalanceException {
+        sridev.debit(new BigDecimal(500));
+        assertThat(sridev.getBal(),is(new BigDecimal(1500)));
+    }
 }

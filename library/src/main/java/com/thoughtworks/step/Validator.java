@@ -14,4 +14,9 @@ interface Validator {
     default void validateAccountNumber(String accNo) throws InvalidAccountNumberException {
         if (!accNo.matches(ACC_NO_PATTERN)) throw new InvalidAccountNumberException();
     }
+
+
+    default void validateWithdrawal(BigDecimal bal, BigDecimal withdrawalAmount) throws InsufficientBalanceException {
+        if(withdrawalAmount.compareTo(bal) > 0) throw new InsufficientBalanceException();
+    }
 }

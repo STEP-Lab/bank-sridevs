@@ -25,4 +25,9 @@ public class Account implements Validator{
     public String getAccNo() {
         return accNo;
     }
+
+    public void debit(BigDecimal amount) throws InsufficientBalanceException {
+        validateWithdrawal(bal,amount);
+        bal = bal.subtract(amount);
+    }
 }

@@ -39,4 +39,13 @@ public class ValidatorTest implements Validator {
         thrown.expectMessage(is("Invalid account number"));
         validateAccountNumber("1234-56789");
     }
+
+    @Test
+    public void rejectsDebitOfAmountgreaterThanBalance() throws InsufficientBalanceException {
+        BigDecimal bal = new BigDecimal(1000);
+        BigDecimal withdrawalAmount = new BigDecimal(1001);
+        thrown.expect(InsufficientBalanceException.class);
+        thrown.expectMessage(is("Insufficient balance"));
+        validateWithdrawal(bal,withdrawalAmount);
+    }
 }
