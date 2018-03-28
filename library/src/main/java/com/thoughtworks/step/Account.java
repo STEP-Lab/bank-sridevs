@@ -2,7 +2,7 @@ package com.thoughtworks.step;
 
 import java.math.BigDecimal;
 
-public class Account implements Validator{
+class Account implements Validator{
     private String accNo;
     private BigDecimal bal;
 
