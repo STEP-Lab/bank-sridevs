@@ -42,8 +42,19 @@ public class AccountTest {
     }
 
     @Test
-    public void checkDebit() throws InsufficientBalanceException {
+    public void checkDebitDeductsAmountFromAnAccount() throws InsufficientBalanceException {
         sridev.debit(new BigDecimal(500));
         assertThat(sridev.getBal(),is(new BigDecimal(1500)));
+    }
+
+    @Test(expected = InsufficientBalanceException.class)
+    public void reportsInsufficientBalanceOnAttemptOfWithdrawalGreaterThanBalance() throws InsufficientBalanceException {
+        sridev.debit(new BigDecimal(100000000));
+    }
+
+    @Test
+    public void checkCreditAddsAmountToTheAccount() {
+        harvar.credit(new BigDecimal(1000));
+        assertThat(harvar.getBal(),is(new BigDecimal(2000)));
     }
 }

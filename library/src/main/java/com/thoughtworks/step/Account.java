@@ -30,4 +30,8 @@ public class Account implements Validator{
         validateWithdrawal(bal,amount);
         bal = bal.subtract(amount);
     }
+
+    public void credit(BigDecimal amount) {
+        bal = bal.add(amount);
+    }
 }
