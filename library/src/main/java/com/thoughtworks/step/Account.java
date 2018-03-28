@@ -1,22 +1,24 @@
 package com.thoughtworks.step;
 
-public class Account implements AccountRequirements{
+import java.math.BigDecimal;
+
+public class Account implements Validator{
     private String accNo;
-    private float bal;
+    private BigDecimal bal;
 
 
-    Account(float bal) throws MinimumBalanceException, InvalidAccountNumberException {
+    Account(BigDecimal bal) throws MinimumBalanceException, InvalidAccountNumberException {
         this(AccountNumberGenerator.generateAccNo(),bal);
     }
 
-    Account(String accNo,float bal) throws MinimumBalanceException, InvalidAccountNumberException {
-        AccountRequirements.validateAccountNumber(accNo);
+    Account(String accNo, BigDecimal bal) throws MinimumBalanceException, InvalidAccountNumberException {
+        validateAccountNumber(accNo);
         this.accNo = accNo;
-        AccountRequirements.checkMinimumBalance(bal);
+        checkMinimumBalance(bal);
         this.bal = bal;
     }
 
-    public float getBal() {
+    public BigDecimal getBal() {
         return bal;
     }
 

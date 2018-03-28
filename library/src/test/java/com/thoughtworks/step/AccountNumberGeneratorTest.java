@@ -12,4 +12,10 @@ public class AccountNumberGeneratorTest {
         assertThat(AccountNumberGenerator.generateAccNo(),is("0000-0002"));
         assertThat(AccountNumberGenerator.generateAccNo(),is("0000-0003"));
     }
+
+    @Test
+    public void resetsLastAccNoToZero() {
+        AccountNumberGenerator.reset();
+        assertThat(AccountNumberGenerator.getAccNoCount(),is(0));
+    }
 }
